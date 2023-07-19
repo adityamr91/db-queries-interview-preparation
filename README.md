@@ -15,6 +15,19 @@ UPDATE SwappingTwoColumnsValueDemo
        SecondColumnValue = FirstColumnValue-SecondColumnValue,
        FirstColumnValue = FirstColumnValue-SecondColumnValue;
 ```
+Syntax for quering from two tables and with foriegn key
+```
+SELECT  users.email, users.password, data.data_1, data.data_2
+FROM users
+INNER JOIN data 
+ON users.user_id=data.user_id
+WHERE users.email='$user_email'
+
+and get all rows without a WHERE condition:
+SELECT users.email, users.password, data.data_1, data.data_2
+FROM users
+INNER JOIN data ON users.user_id=data.user_id
+```
 
 2. <b>Self Join</b>
 
