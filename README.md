@@ -6,16 +6,27 @@
    SELECT * FROM Employee WHERE sal = 
          (
             SELECT MIN(sal) FROM Employee WHERE  sal IN (SELECT DISTINCT TOP N sal FROM Employee ORDER BY sal DESC)
-         )
+         );
 ```
-Swapping of two integer column values 
+   query to get 2nd highest salary
+```
+   SELECT * FROM employees WHERE employee_id IN 
+         (
+            SELECT employee_id FROM employees  WHERE salary =
+                  (
+                     SELECT MAX(salary) FROM employees WHERE salary < (SELECT MAX(salary) FROM employees)
+                  )
+         );
+
+```
+2. <b> Swapping of two integer column values </b>
 ```
 UPDATE SwappingTwoColumnsValueDemo
    SET FirstColumnValue = FirstColumnValue+SecondColumnValue,
        SecondColumnValue = FirstColumnValue-SecondColumnValue,
        FirstColumnValue = FirstColumnValue-SecondColumnValue;
 ```
-Syntax for quering from two tables and with foriegn key
+3. <b>Syntax for quering from two tables and with foriegn key </b>
 ```
 SELECT  users.email, users.password, data.data_1, data.data_2
 FROM users
@@ -29,14 +40,14 @@ FROM users
 INNER JOIN data ON users.user_id=data.user_id
 ```
 
-2. <b>Self Join</b>
+4. <b>Self Join</b>
 
 ```
 SELECT column_name(s)
 FROM table1 a, table1 b
 WHERE a.common_field = b.common_field;
 ```
-3. <b>SQL Inner Join</b>
+5. <b>SQL Inner Join</b>
 
 ```
 Table 1 : Orders
@@ -47,7 +58,7 @@ FROM Orders
 INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
 ```
 
-4. <b>Left Join</b>
+6. <b>Left Join</b>
 ```
 SELECT column_name(s)
 FROM table1
@@ -55,14 +66,14 @@ LEFT JOIN table2
 ON table1.column_name = table2.column_name;
 ```
 
-5. <b>Left Join</b>
+7. <b>Left Join</b>
 ```
 SELECT column_name(s)
 FROM table1
 RIGHT JOIN table2
 ON table1.column_name = table2.column_name;
 ```
-6. <b>Outer Join</b>
+8. <b>Outer Join</b>
 ```
 SELECT column_name(s)
 FROM table1
@@ -70,7 +81,7 @@ FULL OUTER JOIN table2
 ON table1.column_name = table2.column_name
 WHERE condition;
 ```
-7. <b>Union Join</b>
+9. <b>Union Join</b>
 ```
 SELECT column_name(s) FROM table1
 UNION
