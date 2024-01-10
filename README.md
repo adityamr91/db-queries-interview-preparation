@@ -1,4 +1,4 @@
-# dp-queries-interview-preparation
+# db-queries-interview-preparation
 
 1. <b> SQL Query to index Nth highest salary from the table </b>
 
